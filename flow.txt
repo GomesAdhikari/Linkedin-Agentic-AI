@@ -1,0 +1,19 @@
+[Start]
+   |
+   v
+[User Input] ---> [LLM: Intent Recognition + Query Refinement]
+   |                                   |
+   v                                   v
+[Refined Query] -----------------> [Search Engine Query (DuckDuckGo)]
+   |                                   |
+   v                                   v
+[Results Retrieved] ---> [LLM: Summarize + Process Information]
+   |
+   v
+[Generate Final Response]
+   |
+   v
+[Output to User]
+   |
+   v
+[End]
