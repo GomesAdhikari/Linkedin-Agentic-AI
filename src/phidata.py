@@ -37,7 +37,6 @@ news_relevance_agent = Agent(
     name="News Relevance Validator",
     role="Critically evaluate AI news for social media posting",
     model=Groq(id="llama-3.3-70b-versatile"),
-    tools=[DuckDuckGo()],
     instructions=[
         "Carefully assess the generated AI news content",
         "Determine if the content is suitable for LinkedIn posting",
@@ -67,9 +66,12 @@ def main():
         f"Evaluate the following AI content for LinkedIn posting suitability:\n\n{news_response.content}", 
         stream=False
     )
-    
     # Check if validation recommends not posting
-    news_content = "" if "No" in validation_response.content else news_response.content
+    news_content = news_response.content
+    if "<function=duckduckgo_news" in validation_response.content:
+        news_content = ""
+    else:
+        news_content=news_response.content
     
     return {
         "news_content": news_content,
