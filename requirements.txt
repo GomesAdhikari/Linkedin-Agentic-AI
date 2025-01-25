@@ -3,4 +3,5 @@ python-dotenv
 duckduckgo-search
 nest-asyncio
 groq
--e .
+gunicorn
+#-e .
